@@ -1,0 +1,89 @@
+h1{
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    color: #1e3363;
+}
+
+ul{
+    list-style: none;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #f1564f;
+    font-family: 'Playfair Display', serif;
+}
+
+a:hover, a:focus {
+    color: #1e3363;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 1em;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  nav img{
+    width: 210px;
+    padding-left: 5em;
+    padding-right: 6em;
+    padding-top: .5em;
+  }
+
+  header li a {
+    margin: 1em;
+  }
+
+  img.cat{
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 50%;
+     border-radius: 10px;
+  }
+
+  main h1{
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    color: #1e3363;
+    font-size: 25px;
+  }
+
+  main form{
+      font-size: 20px;
+      font-family: 'Roboto Condensed', sans-serif;
+      padding-left: 2em;
+    }
+
+
+  p{
+      text-align: center;
+  }
+
+  /* like knop positie*/
+img.like {
+  position: absolute;
+  bottom: 100px;
+  right: 80px;
+  width: 114px;
+  height: 100px;
+}
+
+/* dislike knop positie*/
+img.dislike {
+  position: absolute;
+  bottom: 100px;
+  left: 80px;
+  width: 100px;
+  height: 100px;
+}
