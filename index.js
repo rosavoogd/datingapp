@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
-const port = 8090;
+const port = 5500;
 
-// 1. call ejs 
+// 1. set templating engine
 app.set ("view engine", "ejs");
 app.set ("views", "view");
 
@@ -34,6 +34,11 @@ const list = [
         name: "Dolly",
         species: "Dog",
         bio: "Labrador, 2 years old"
+    },
+    {
+        name: "Pip",
+        species: "Bird",
+        bio: "Cockatoo, 1 year old"
     }
 ];
 
