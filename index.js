@@ -1,14 +1,22 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+// const slug = require("slug");
 const port = 5500;
 
 // 1. set templating engine
 app.set ("view engine", "ejs");
 app.set ("views", "view");
 
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.post("/", form);
+
 app.get("/", home);
 app.get("/about", about);
 app.get("/animal", animal);
+app.get("/files/:type", files);
+app.get("/settings", form);
 
 function home (req, res) {
     res.send ("Hello World!");
@@ -23,6 +31,15 @@ function animal(req, res){
     res.render('list', {data: data});
 }
 
+function files(req, res){
+    console.log(req.params);
+    res.send('files');
+}
+
+function form(req, res){
+    res.render('settings');
+}
+
 /**************************************/
 /* THE ANIMALS IN AN ARRAY AS OBJECTS */
 /**************************************/
@@ -31,18 +48,19 @@ const data = [
         name: "Bob",
         species:"Cat",
         bio: "Tabby Cat, 3 years old",
-        img: "img/bob.jpeg"
+        img: "static-website/img/bob.jpeg"
     },
     {
         name: "Dolly",
         species: "Dog",
         bio: "Labrador, 2 years old",
-        img: "img/bob.jpeg"
+        img: "static-website/img/bob.jpeg"
     },
     {
         name: "Pip",
         species: "Bird",
-        bio: "Cockatoo, 1 year old"
+        bio: "Cockatoo, 1 year old",
+        img: "static-website/img/bob.jpeg"
     }
 ];
 

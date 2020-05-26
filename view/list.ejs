@@ -1,9 +1,23 @@
-<h1>Animals</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animals</title>
+    <link rel="stylesheet" href="../static-website/style/style.css"> 
+</head>
+<body>
+    <h1>Animals</h1>
 <% for (var index = 0; index < data.length; index++){ %>
     <h2>   
-        <a href="/<%= data[index].name %>"><%= data[index].species%></a>
+        <a href="/<%= data[index].name %>"><%= data[index].name%></a>
     </h2>
     <p><%= data[index].bio %></p>
     <p><%= data[index].age %></p>
+    <p><%= data[index].img %></p>
     <% } %>
  
+</body>
+</html>
+
+
