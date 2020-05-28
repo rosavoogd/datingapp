@@ -1,16 +1,18 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-// const slug = require("slug");
+const slug = require("slug");
 const port = 5500;
 
 // 1. set templating engine
 app.set ("view engine", "ejs");
 app.set ("views", "view");
 
+// add bodyParser
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post("/", form);
+//route for settings function
+app.post("/", settings);
 
 app.get("/", home);
 app.get("/about", about);
@@ -26,7 +28,9 @@ function about(req, res) {
     res.send("Hello About");
 }
 
-// 2. Send data with the template
+/***********************/
+/* TEMPLATE ASSIGNMENT */
+/***********************/
 function animal(req, res){
     res.render('list', {data: data});
 }
@@ -36,8 +40,28 @@ function files(req, res){
     res.send('files');
 }
 
+/*******************/
+/* FORM ASSIGNMENT */
+/*******************/
 function form(req, res){
     res.render('settings');
+}
+
+function settings(req, res){
+    var id = slug (req.body.species).toLowerCase();
+    
+    data.push({
+        id: id,
+        name: req.body.name,
+        species: req.body.species,
+        bio: req.body.bio,
+        age: req.body.age,
+        environment: req.body.environment,
+
+        img: req.body.img
+    });
+
+    res.redirect('/' + name);
 }
 
 /**************************************/
@@ -47,20 +71,30 @@ const data = [
     {
         name: "Bob",
         species:"Cat",
-        bio: "Tabby Cat, 3 years old",
-        img: "static-website/img/bob.jpeg"
+        bio: "Tabby Cat",
+        age: 3,
+        environment:"Apartment, Garden, Balcony, Farm",
+        money: 100,
+        img: "../static-website/img/bob.jpeg"
+        
     },
     {
         name: "Dolly",
         species: "Dog",
-        bio: "Labrador, 2 years old",
-        img: "static-website/img/bob.jpeg"
+        bio: "Labrador",
+        age: 2,
+        environment:"Garden, Balcony, Farm",
+        money: 200,
+        img: "../static-website/img/bob.jpeg"
     },
     {
         name: "Pip",
         species: "Bird",
-        bio: "Cockatoo, 1 year old",
-        img: "static-website/img/bob.jpeg"
+        bio: "Cockatoo",
+        age: 1,
+        environment:"Apartment, Garden, Balcony, Farm",
+        money: 50,
+        img: "../static-website/img/bob.jpeg"
     }
 ];
 
