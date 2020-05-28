@@ -3,42 +3,47 @@ const app = express();
 const bodyParser = require("body-parser");
 const slug = require("slug");
 const port = 5500;
+const session = require('express-session')
 
-// 1. set templating engine
+const app = express()
+app.use(session({
+  'secret': '343ji43j4n3jn4jk3n'
+}))
+
+// set templating engine
 app.set ("view engine", "ejs");
 app.set ("views", "view");
 
 // add bodyParser
 app.use(bodyParser.urlencoded({extended: true}));
-
-//route for settings function
-app.post("/", settings);
-
-app.get("/", home);
-app.get("/about", about);
-app.get("/animal", animal);
-app.get("/files/:type", files);
-app.get("/settings", form);
+// add static files 
+app.use(express.static('static-website'))
+app.use('/datingapp', express.static('static-website'))
 
 function home (req, res) {
     res.send ("Hello World!");
 }
 
+app.get("/", home);
+
 function about(req, res) {
     res.send("Hello About");
 }
 
-/***********************/
-/* TEMPLATE ASSIGNMENT */
-/***********************/
+app.get("/about", about);
+
 function animal(req, res){
     res.render('list', {data: data});
 }
+
+app.get("/animal", animal);
 
 function files(req, res){
     console.log(req.params);
     res.send('files');
 }
+
+app.get("/files/:type", files);
 
 /*******************/
 /* FORM ASSIGNMENT */
@@ -46,6 +51,8 @@ function files(req, res){
 function form(req, res){
     res.render('settings');
 }
+
+app.get("/settings", form);
 
 function settings(req, res){
     var id = slug (req.body.species).toLowerCase();
@@ -63,6 +70,19 @@ function settings(req, res){
 
     res.redirect('/' + name);
 }
+
+app.post("/", settings);
+
+
+
+
+
+
+/***********************/
+/* TEMPLATE ASSIGNMENT */
+/***********************/
+
+
 
 /**************************************/
 /* THE ANIMALS IN AN ARRAY AS OBJECTS */
@@ -139,3 +159,21 @@ app.listen(port, function() {
 
 //server is geschreven, in de terminal doe je node index.js en hij runt
 //nu kan ik npm start doen om de server en nodemon te starten 
+
+/*************/
+/* NORMAL JS */
+/*************/
+
+var slider = document.getElementById('money');
+var input = document.getElementById('input');
+
+function sliderdata(){
+    slider.value=input.value;
+};
+
+function sliderinput(){
+    input.value=slider.value
+};
+
+input.addEventListener("change", sliderdata);
+input.addEventListener("change", sliderinput);
