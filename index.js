@@ -3,9 +3,8 @@ const app = express();
 const bodyParser = require("body-parser");
 const slug = require("slug");
 const port = 5500;
-const session = require('express-session')
+const session = require('express-session');
 
-const app = express()
 app.use(session({
   'secret': '343ji43j4n3jn4jk3n'
 }))
@@ -74,15 +73,7 @@ function settings(req, res){
 app.post("/", settings);
 
 
-
-
-
-
-/***********************/
-/* TEMPLATE ASSIGNMENT */
-/***********************/
-
-
+const counter = 0;
 
 /**************************************/
 /* THE ANIMALS IN AN ARRAY AS OBJECTS */
@@ -93,9 +84,9 @@ const data = [
         species:"Cat",
         bio: "Tabby Cat",
         age: 3,
-        environment:"Apartment, Garden, Balcony, Farm",
+        environment:["Apartment, Garden, Balcony, Farm"],
         money: 100,
-        img: "../static-website/img/bob.jpeg"
+        src: "static-website/img/bob.jpeg"
         
     },
     {
@@ -103,24 +94,63 @@ const data = [
         species: "Dog",
         bio: "Labrador",
         age: 2,
-        environment:"Garden, Balcony, Farm",
+        environment:["Garden, Balcony, Farm"],
         money: 200,
-        img: "../static-website/img/bob.jpeg"
+        src: "static-website/img/dolly.jpg"
     },
     {
         name: "Pip",
         species: "Bird",
         bio: "Cockatoo",
         age: 1,
-        environment:"Apartment, Garden, Balcony, Farm",
+        environment:["Apartment, Garden, Balcony, Farm"],
         money: 50,
-        img: "../static-website/img/bob.jpeg"
+        src: "static-website/img/bob.jpeg"
     }
 ];
 
-/****************/
-/* MAKE IT  HTML*/
-/****************/
+// /**********************/
+// /* ADD ANIMALS TO HTML*/
+// /**********************/
+
+// for (i = 0; i < animals.length; i++){
+//     var newanimal = document.createElement("article");
+//     newanimal.setAttribute("id", animals[i].name);
+//     newanimal.setAttribute('class', 'animal');
+
+//     var animalimg = document.createElement('img');
+//     animalimg.setAttribute('src', animals[i].src);
+
+//     var animalname = document.createElement('h1');
+//     animalname.textContent = animals[i].name + " (" + animals[i].age + ")";
+
+//     newanimal.appendChild(animalimg);
+//     newanimal.appendChild(animalname);
+
+//     document.querySelector('section').appendChild(newanimal);
+// }
+
+// /************************/
+// /* CLICK LIKE OR DISLIKE*/
+// /************************/
+
+// var button = document.querySelectorAll('.button');
+// for (i = 0; i < button.length; i++){
+//     button[i].addEventListener('click', choosing);
+// }
+
+// function choosing(event){
+// var allanimals = document.querySelectorAll('section .animal');
+// if (event.target.classlist.contains("dislike")){
+//     allanimals[counter].classlist.add("disliked");
+// } else{
+//     allanimals[counter].classlist.add("liked");
+// }
+// counter++;
+// }
+
+
+
 
 // function profiles(req, res){
 //     let doc = "<!doctype html>";
@@ -164,16 +194,16 @@ app.listen(port, function() {
 /* NORMAL JS */
 /*************/
 
-var slider = document.getElementById('money');
-var input = document.getElementById('input');
+// var slider = document.getElementById('money');
+// var input = document.getElementById('input');
 
-function sliderdata(){
-    slider.value=input.value;
-};
+// function sliderdata(){
+//     slider.value=input.value;
+// };
 
-function sliderinput(){
-    input.value=slider.value
-};
+// function sliderinput(){
+//     input.value=slider.value
+// };
 
-input.addEventListener("change", sliderdata);
-input.addEventListener("change", sliderinput);
+// input.addEventListener("change", sliderdata);
+// input.addEventListener("change", sliderinput);

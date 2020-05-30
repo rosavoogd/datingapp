@@ -2,8 +2,8 @@
 <link rel="stylesheet" href="css/style.css">
  <title>Profile Settings</title>
  <h1>Change preferences</h1>
- <form action=/ method="POST">
-    <label for="animal">Looking for: <br>
+ <form action="">
+    <label for="animal">Looking for: <br><br>
         <input type="checkbox" name="test">
         <img class="checkbox" src="img/cat.png">
         <input type="checkbox" name="test">
@@ -21,15 +21,22 @@
         <input type="radio" name="age" id="age">6-10 
         <input type="radio" name="age" id="age">10+ 
     </label><br><br>
+
 <label for="provide">I am able to provide: <br>
     <input type="radio" name="provide" id="provide">Garden
     <input type="radio" name="provide" id="provide">Appartment
     <input type="radio" name="provide" id="provide">Balcony
     <input type="radio" name="provide" id="provide">Farm
 </label><br><br>
-<label for="money">I am able to spend €____ per month: <br>
-    <input type="range" id="money" name="money" min="50" max="1000">
-</label><br><br>
+
+<!-- <label for="money"><br>
+    <input type="range" id="money" name="money" step="5" min="50" max="1000">
+</label><br> -->
+<label for="input">I am able to spend €
+    <input type="number" id="input" name="input" step="5" min="50" max="1000">
+    per month</label>
+<br><br>
+
 <label for="button">
      <input type="submit" value="Save preferences">
 </label>

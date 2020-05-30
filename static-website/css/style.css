@@ -21,10 +21,11 @@ a:hover, a:focus {
     color: #1e3363;
   }
 
-  header {
-    display: flex;
-    align-items: center;
-    
+  header, nav img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
   }
   
   nav ul {
@@ -50,7 +51,7 @@ a:hover, a:focus {
      display: block;
      margin-left: auto;
      margin-right: auto;
-     width: 50%;
+     width: 300px;
      border-radius: 10px;
   }
 
@@ -66,6 +67,13 @@ a:hover, a:focus {
       font-family: 'Roboto Condensed', sans-serif;
       text-align: center;
     }
+
+  form {
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+  }
+
   input[type=number]{
     width: 50px;
     text-align: center;
@@ -85,15 +93,17 @@ a:hover, a:focus {
   display: block;
 }
 
-input[type=checkbox]{
+/* input[type=checkbox]{
   opacity: 0;
-}
+} */
 
 
   p{
       text-align: center;
       font-family: 'Roboto Condensed', sans-serif;
   }
+
+  
 
   /* like knop positie*/
 img.like {
