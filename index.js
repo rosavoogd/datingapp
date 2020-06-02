@@ -5,8 +5,20 @@ const slug = require("slug");
 const port = 5500;
 const session = require('express-session');
 
+//MONGODB
+var mongo = require("mongodb");
+require(dotenv).config();
+
+var db = null;
+var url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
+
+mongo.MongoClient.connect(url, function (err, client){
+    if (err) throw err
+    db = client.db(process.env.DB_NAME);
+})
+
 app.use(session({
-  'secret': '343ji43j4n3jn4jk3n'
+  'secret': 'SESSIONS_SECRET'
 }))
 
 // set templating engine
@@ -44,9 +56,8 @@ function files(req, res){
 
 app.get("/files/:type", files);
 
-/*******************/
+
 /* FORM ASSIGNMENT */
-/*******************/
 function form(req, res){
     res.render('settings');
 }
@@ -71,6 +82,71 @@ function settings(req, res){
 }
 
 app.post("/", settings);
+
+// MONGDODB FIND
+function database(req, res, next){
+    db.collection('data').find().toArray(done)
+
+    function done(err, data){
+        if (err){
+            next (err)
+        }
+        else{
+            res.render('list', {data: data})
+        }
+    }
+}
+
+//MONGODB UPDATE
+function change(req, res, next){
+    db.collection('data').updateOne({
+        _id: ObjectID(req.body.description)
+    }, done)
+
+    function done(err, data){
+        if (err){
+            next (err)
+        }
+        else{
+            res.redirect('/' + data.insertedID)
+        }
+    }
+
+}
+
+//MONGODB ADDANIMAL
+function addanimal(req, res, next){
+    db.collection('data').insertOne({
+        name: req.body.name,
+        species: req.body.species,
+        bio: req.body.bio,
+        age: req.body.age
+    },done)
+    function done(err, data){
+        if (err){
+            next(err)
+        } else{
+            res.redirect('/' + data.insertedID)
+        }
+    }
+}
+
+//SESSIONS SET
+function signup(req, res, next){
+
+    function onhash(hash){
+
+
+            function oninstert(err){
+                if (err){
+                next (err)
+            } else {
+            req.session.user = {username: username}
+            res.redirect('/')
+            }
+        }
+    }
+}
 
 
 const counter = 0;
@@ -109,79 +185,6 @@ const data = [
     }
 ];
 
-// /**********************/
-// /* ADD ANIMALS TO HTML*/
-// /**********************/
-
-// for (i = 0; i < animals.length; i++){
-//     var newanimal = document.createElement("article");
-//     newanimal.setAttribute("id", animals[i].name);
-//     newanimal.setAttribute('class', 'animal');
-
-//     var animalimg = document.createElement('img');
-//     animalimg.setAttribute('src', animals[i].src);
-
-//     var animalname = document.createElement('h1');
-//     animalname.textContent = animals[i].name + " (" + animals[i].age + ")";
-
-//     newanimal.appendChild(animalimg);
-//     newanimal.appendChild(animalname);
-
-//     document.querySelector('section').appendChild(newanimal);
-// }
-
-// /************************/
-// /* CLICK LIKE OR DISLIKE*/
-// /************************/
-
-// var button = document.querySelectorAll('.button');
-// for (i = 0; i < button.length; i++){
-//     button[i].addEventListener('click', choosing);
-// }
-
-// function choosing(event){
-// var allanimals = document.querySelectorAll('section .animal');
-// if (event.target.classlist.contains("dislike")){
-//     allanimals[counter].classlist.add("disliked");
-// } else{
-//     allanimals[counter].classlist.add("liked");
-// }
-// counter++;
-// }
-
-
-
-
-// function profiles(req, res){
-//     let doc = "<!doctype html>";
-//     let length = data.length;
-//     let index = -1;
-//     let profile;
-
-//     doc += "<title>My Profile</title>";
-//     doc += "<h1>Profile</h1>";
-
-//     while (++index < length) {
-//         profile = data[index];
-//         doc += '<h2><a href="/' + profile.id + '">' +
-//         profile.title + '<a/></h2>';
-//     }
-// }
-// profiles(req,res){
-//     res.render('list.ejs', {data: data})
-// }
-
-
-// for (i = 0; i < animals.length; i++){
-//     const newanimal = document.createElement("article");
-//     newanimal.setAttribute("id", animals[i].name);
-
-//     const newimg 
-// }
-
-
-
-
 
 app.listen(port, function() {
     console.log("The server is running!");
@@ -189,21 +192,3 @@ app.listen(port, function() {
 
 //server is geschreven, in de terminal doe je node index.js en hij runt
 //nu kan ik npm start doen om de server en nodemon te starten 
-
-/*************/
-/* NORMAL JS */
-/*************/
-
-// var slider = document.getElementById('money');
-// var input = document.getElementById('input');
-
-// function sliderdata(){
-//     slider.value=input.value;
-// };
-
-// function sliderinput(){
-//     input.value=slider.value
-// };
-
-// input.addEventListener("change", sliderdata);
-// input.addEventListener("change", sliderinput);

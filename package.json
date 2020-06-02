@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "Server voor mij dating app",
+  "description": "Server voor mijn dating app",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"

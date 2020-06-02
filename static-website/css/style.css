@@ -1,14 +1,12 @@
-
-
 h1{
     font-family: 'Playfair Display', serif;
     text-align: center;
     color: #1e3363;
+    font-size: 25px;
 }
 
 ul{
-    list-style: none;
-    
+    list-style: none; 
 }
 
 ul li a{
@@ -27,6 +25,10 @@ a:hover, a:focus {
     margin-right: auto;
     width: 100%;
   }
+
+  header li a {
+    margin: 1em;
+  }
   
   nav ul {
     list-style: none;
@@ -35,19 +37,15 @@ a:hover, a:focus {
     flex-wrap: wrap;
     justify-content: center;
   }
-  
-  nav img{
+
+header img{
     width: 210px;
     padding-left: 5em;
     padding-right: 6em;
     padding-top: .5em;
   }
 
-  header li a {
-    margin: 1em;
-  }
-
-  img.cat{
+  img.animal{
      display: block;
      margin-left: auto;
      margin-right: auto;
@@ -55,23 +53,29 @@ a:hover, a:focus {
      border-radius: 10px;
   }
 
-  main h1{
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    color: #1e3363;
-    font-size: 25px;
-  }
+  div.box{
+    background-color: #e8e3de;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 410px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px lightgrey;
 
-  main form{
-      font-size: 20px;
-      font-family: 'Roboto Condensed', sans-serif;
-      text-align: center;
-    }
+  }
 
   form {
     font-size: 20px;
     font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
+    background-color: #e8e3de;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 410px;
+    height: 310px;
+    border-radius: 10px;
   }
 
   input[type=number]{
@@ -93,22 +97,26 @@ a:hover, a:focus {
   display: block;
 }
 
-/* input[type=checkbox]{
-  opacity: 0;
-} */
+input[type=submit]{
+  color: #ffffff;
+  background-color: #f1564f;
+  padding: 1em;
+  border-radius: 10px;
+  border: none;
+}
 
 
-  p{
-      text-align: center;
-      font-family: 'Roboto Condensed', sans-serif;
-  }
+main p{
+  text-align: center;
+  font-family: 'Roboto Condensed', sans-serif; 
+}
 
   
 
   /* like knop positie*/
 img.like {
   position: absolute;
-  bottom: 100px;
+  bottom: 80px;
   right: 80px;
   width: 114px;
   height: 100px;
@@ -117,8 +125,36 @@ img.like {
 /* dislike knop positie*/
 img.dislike {
   position: absolute;
-  bottom: 100px;
+  bottom: 80px;
   left: 80px;
   width: 100px;
   height: 100px;
+}
+
+img.matches{
+  border-radius: 50%;
+  width: 20%;
+  margin-left: 1em;
+  float: left;
+  padding: .5em;
+}
+
+.match{
+  float: left;
+}
+
+
+main.bg{
+  background-color: #e8e3de;
+  border-radius: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 410px;
+  height: 600px;
+}
+
+div p{
+  text-align: start;
+
 }
