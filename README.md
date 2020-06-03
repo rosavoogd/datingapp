@@ -3,7 +3,7 @@
 
 ## Job Story 
 
-When I’m feeling alone and am looking for a new pet to keep me company, I want to be able to filter the pets based on their needs, So I can decide if I am capable to provide the pet with everything it will need to live a happy life.
+When I’m feeling alone and am looking for a new pet to keep me company, I want to be able to filter the pets based on their needs, So I can decide if I am capable of providing the pet with everything they will need to live a happy life.
 
 ## Application
 
