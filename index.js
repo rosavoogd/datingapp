@@ -5,17 +5,17 @@ const slug = require("slug");
 const port = 5500;
 const session = require('express-session');
 
-//MONGODB
-var mongo = require("mongodb");
-require(dotenv).config();
+// //MONGODB
+// var mongo = require("mongodb");
+// require(dotenv).config();
 
-var db = null;
-var url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
+// var db = null;
+// var url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
 
-mongo.MongoClient.connect(url, function (err, client){
-    if (err) throw err
-    db = client.db(process.env.DB_NAME);
-})
+// mongo.MongoClient.connect(url, function (err, client){
+//     if (err) throw err
+//     db = client.db(process.env.DB_NAME);
+// })
 
 app.use(session({
   'secret': 'SESSIONS_SECRET'
