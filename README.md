@@ -9,6 +9,30 @@ When I’m feeling alone and am looking for a new pet to keep me company, I want
 
 ## Database 
 
+## Database structure human
+
+| Tables   | Type          | Value             |
+| -------- |:-------------:| -----------------:|
+| _id      | primary-key   | auto-increment    |
+| username | string        | Rosa              |
+| gender   | string        | female            |
+| email    | string        | rosa.voogd@hva.nl |
+| age      | integer       | 22                |
+| location | string        | Amsterdam         |
+
+## Database structure animal
+
+| Tables      | Type          | Value             |
+| ----------- |:-------------:| -----------------:|
+| _id         | primary-key   | auto-increment    |
+| name        | string        | Bob               |
+| species     | string        | Cat               |
+| bio         | string        | Tabby Cat              |
+| age         | integer       | 3                                 |
+| environment | array         | Appartment, Garden, Farm, Balcony |
+| money       | integer       | 100        |
+
+
 ## Installing
 
 For this project I am using node.js and npm 
