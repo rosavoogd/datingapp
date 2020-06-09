@@ -16,6 +16,7 @@ When I’m feeling alone and am looking for a new pet to keep me company, I want
 | _id      | primary-key   | auto-increment    |
 | username | string        | Rosa              |
 | gender   | string        | female            |
+| img      | string        | rosa.png          |
 | email    | string        | rosa.voogd@hva.nl |
 | age      | integer       | 22                |
 | location | string        | Amsterdam         |
@@ -29,6 +30,7 @@ When I’m feeling alone and am looking for a new pet to keep me company, I want
 | species     | string        | Cat               |
 | bio         | string        | Tabby Cat              |
 | age         | integer       | 3                                 |
+| img         | string        | bob.jpeg             |
 | environment | array         | Appartment, Garden, Farm, Balcony |
 | money       | integer       | 100        |
 
