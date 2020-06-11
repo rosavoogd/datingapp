@@ -1,3 +1,5 @@
+
+// Helped by Rijk for the structure and base
 require('dotenv').config();
 
 var express = require("express");
@@ -30,10 +32,25 @@ express()
     .use(express.static('static-website'))
     .use('/datingapp', express.static('static-website'))
     .get('/', checkAuth, getHome)
+
     .get('/login', getLogin)
     .post('/login', postLogin)
+
     .get('/register', getRegister)
     .post('/register', postRegister)
+
+    .get('/messages', getMessages)
+    .get('/messagesId', getMessagesId)
+    .post('/messagesId', postMessagesId)
+
+    .get('/appointments', getAppointments)
+
+    .get('/profile', getProfile)
+    .post('/profile', postProfile)
+    
+
+
+    
     .listen(port, function () {
         console.log("The server is running!");
     });
@@ -144,6 +161,7 @@ function getAppointments(req, res) {
 ================================================================================================== */
 function getProfile(req,res) {
     res.render('profile');
+}
 
     function postProfile(req,res) {
 
@@ -153,4 +171,4 @@ function getProfile(req,res) {
          * 3. Als er aanpassingen gemaakt worden en de gebruiker klikt op save, onthoud deze sessie
          */
     }
-}
+
