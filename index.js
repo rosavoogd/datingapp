@@ -48,8 +48,6 @@ express()
     .get('/profile', getProfile)
     .post('/profile', postProfile)
     
-
-
     
     .listen(port, function () {
         console.log("The server is running!");
@@ -64,7 +62,6 @@ function checkAuth(req, res, next) {
     if (loggedIn) {
         return next();
     }
-
     return res.redirect('/login');
 }
 
@@ -86,8 +83,7 @@ function getHome(req, res) {
 function getLogin(req, res) {
     res.render('login');
 }
-
-function postLogin(req, res) {
+    function postLogin(req, res) {
     /**
      * 1. Check of er een email in req.body bestaat (zo niet error)
      * 2. Haal gebruiker op uit de database op basis van email - find mongo 
@@ -102,15 +98,13 @@ function postLogin(req, res) {
 function getRegister(req, res) {
     res.render('register');
 }
-
-function postRegister(req, res) {
+    function postRegister(req, res) {
     /**
      * 1. Haal gebruikers uit DB waar email == req.body.email
      * 2. Kijk of die gebruiker bestaat, zo niet error
-     * 3. Sla de gebruiker op in de DB
+     * 3. Sla de gebruiker op in de DB, en laat het form profile invullen
      * 4. Log de gebruiker in, (sla op in sessie)
      */
-
     res.redirect('/');
 }
 
@@ -118,11 +112,9 @@ function postRegister(req, res) {
 ================================================================================================== */
 function getMessages(req, res) {
     res.render('messages');
-
     /**
-     * 1. Check of de gebruikers sessie al messages heeft in de DB
-     * 2. Haal messages uit de DB van de gebruikers sessie
-     * 3. Sorteer de messages op datum, recent eerst
+     * 1. Haal messages uit de DB van de gebruikers sessie
+     * 2. Sorteer de messages op datum, recent eerst
      */
 }
 
@@ -131,14 +123,12 @@ function getMessages(req, res) {
 function getMessagesId(req, res) {
     res.render('messagesId');
 }
-
-function postMessagesId(req, res) {
-   
+    function postMessagesId(req, res) {
     /**
-    * 1. Maak een typveld voor het bericht 
-    * 2. Check of er een bericht getyped is.
-    * 3. Is er een bericht getyed en wordt er op send gedrukt, verstuur bericht 
-    * 
+    * 1. De gebruiker verstuurd het bericht
+    * 2. Bestaat de huidige chat
+    * 3. Sla bericht op in huidige chat
+    * 4. Ververs chat pagina (redirect naar /message/ + huidig ID
     * */
 }
 
@@ -147,28 +137,24 @@ function postMessagesId(req, res) {
 ================================================================================================== */
 function getAppointments(req, res) {
     res.render('appointments');
-
     /**
-     * 1. Check of er appointments voor de gebruiker aanwezig zijn in de database
-     * 2. Haal appointments voor de gebruiker uit de database
-     * 3. Weergeef de appointments en sorteer op dichtsbijzijnde datum
+     * 1. Haal appointments voor de gebruiker uit de database, zijn er geen appointments -> "no appointments yet"
+     * 2. Weergeef de appointments en sorteer op dichtsbijzijnde datum
      */
 }
 
 
-
 /* PROFILE
 ================================================================================================== */
-function getProfile(req,res) {
+function getProfile(req, res) {
     res.render('profile');
 }
-
     function postProfile(req,res) {
-
         /**
          * 1. check of het profiel met de preferences al een keer is ingevuld
          * 2. Als het al is ingevuld, toon de preferences, zo niet, toon een leeg form
          * 3. Als er aanpassingen gemaakt worden en de gebruiker klikt op save, onthoud deze sessie
+         * 4. Ververs profiel pagina (redirect naar /profile/)
          */
     }
 
