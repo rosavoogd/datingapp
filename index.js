@@ -5,17 +5,21 @@ require('dotenv').config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var slug = require("slug");
-var session = require('express-session');
+// var session = require('express-session');
 var mongo = require("mongodb");
 
 const port = 5500;
+
+// //didiercatz had this solution for the MongoNetworkError
+// const { DB_USERNAME, DB_PASSWORD, DB_NAME } = process.env
+
 
 /* DATABASE 
 ================================================================================================== */
 var db = null;
 var url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
-
-mongo.MongoClient.connect(url, function (err, client){
+console.log(url);
+mongo.MongoClient.connect(url, {useUnifiedTopology: true}, function (err, client){
     if (err) throw err
     db = client.db(process.env.DB_NAME);
 })
@@ -25,9 +29,9 @@ mongo.MongoClient.connect(url, function (err, client){
 express()
     .set("view engine", "ejs")
     .set("views", "view")
-    .use(session({
-        'secret': 'SESSIONS_SECRET'
-    }))
+    // .use(session({
+    //     'secret': 'SESSIONS_SECRET'
+    // }))
     .use(bodyParser.urlencoded({extended: true}))
     .use(express.static('static-website'))
     .use('/datingapp', express.static('static-website'))
@@ -74,8 +78,8 @@ function getHome(req, res) {
         3. Filter de dieren (array.filter())
         4. Stuur dieren in res.render
     */
-    var dieren = [];
-    res.render('index', { data: dieren });
+    const animals = [];
+    res.render('index', { data: animals });
 }
 
 /* LOGIN

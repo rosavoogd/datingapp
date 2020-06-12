@@ -1,0 +1,42 @@
+<!DOCTYPE html>	
+<html lang="en">
+    
+<%- include('head'); %> <!-- including head.ejs-->
+<body>
+
+    <%- include('header'); %> <!-- including header.ejs-->
+
+    <main class="bg">
+        <h1>Bob</h1>
+        <h2 class="care">You're chatting with Bob's caretaker <br> Lily</h2>
+       <!-- img src: FAVPNG shorturl.at/bcBEP  -->
+        <img class="messageyou" src="img/profile.jpg" alt="">
+        <p class="chat">Hallo Lily, Hoe gaat het met Bob?</p>
+        <!-- img src: PINTEREST www.pinterest.com/pin/746823550679493158/ -->
+        <img class="message" src="img/bob.jpeg" alt="">
+        <p class="chatyou">Hallo! Met Bob gaat het goed, nog steeds op zoek naar een leuk nieuw baasje.</p>
+        <img class="messageyou" src="img/profile.jpg" alt="">
+        <p class="chat">Zou ik een afspraak kunnen maken om Bob te ontmoeten?</p>
+        <img class="message" src="img/bob.jpeg" alt="">
+        <p class="chatyou">Zo te zien voldoe je aan alle eisen 
+            van Bob dus natuurlijk kan dat!
+            Ik zal u wat mogelijke data sturen om
+            uit te kiezen.</p>
+
+            <form class="date" action="">
+                <input type="radio" name="june" id="june1" value="june1" class="visually-hidden">
+                <label for="june1">01-06 / 11:00</label><br><br>
+                <input type="radio" name="june" id="june2" value="june2" class="visually-hidden">
+                <label for="june2">02-06 / 11:00</label><br><br>
+                <input type="radio" name="june" id="june4" value="june4" class="visually-hidden">
+                <label for="june4">04-06 / 12:00</label>
+            </form>
+
+
+       
+
+        
+    </main>
+    <%- include('footer'); %> <!-- including footer.ejs-->
+</body>
+</html>

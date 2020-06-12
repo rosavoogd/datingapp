@@ -1,0 +1,225 @@
+h1{
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    color: #1e3363;
+    font-size: 25px;
+}
+
+ul{
+    list-style: none; 
+}
+
+ul li a{
+    text-decoration: none;
+    color: #f1564f;
+    font-family: 'Playfair Display', serif;
+}
+
+a:hover, a:focus {
+    color: #1e3363;
+  }
+
+  header, nav img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  header li a {
+    margin: 1em;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+header img{
+    width: 210px;
+    padding-left: 5em;
+    padding-right: 6em;
+    padding-top: .5em;
+  }
+
+  img.animal{
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     width: 300px;
+     border-radius: 10px;
+  }
+
+  p.name{
+    text-align: center;
+  }
+
+  div.box{
+    background-color: #e8e3de;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 410px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px lightgrey;
+
+  }
+
+  form {
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+    background-color: #e8e3de;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 410px;
+    height: 310px;
+    border-radius: 10px;
+  }
+
+  input[type=number]{
+    width: 50px;
+    text-align: center;
+  }
+
+.checkbox:hover {
+  background-color: #f1564f;
+  border-radius: 50%;
+  cursor: pointer;
+  
+}
+
+.checkbox input:checked{
+  background-color: #f1564f;
+  border-radius: 50%;
+  padding: .3em;
+  display: block;
+}
+
+input[type=submit]{
+  color: #ffffff;
+  background-color: #f1564f;
+  padding: 1em;
+  border-radius: 10px;
+  border: none;
+}
+
+
+main p{
+  text-align: center;
+  font-family: 'Roboto Condensed', sans-serif; 
+}
+
+  
+
+  /* like knop positie*/
+img.like {
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  width: 114px;
+  height: 100px;
+}
+
+/* dislike knop positie*/
+img.dislike {
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+  width: 100px;
+  height: 100px;
+}
+
+img.matches{
+  border-radius: 50%;
+  width: 20%;
+  margin-left: 1em;
+  float: left;
+  padding: .5em;
+}
+
+.match{
+  float: left;
+}
+
+
+main.bg{
+  background-color: #e8e3de;
+  border-radius: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 410px;
+  height: 600px;
+}
+
+div p{
+  text-align: start;
+}
+
+img.message{
+  border-radius: 50%;
+  width: 15%;
+  margin-left: 1em;
+  float: left;
+  padding: .5em;
+  margin-top: 2em;
+}
+
+img.messageyou{
+  border-radius: 50%;
+  width: 15%;
+  margin-right: 1em;
+  float: right;
+  padding: .5em;
+}
+
+h2.care{
+  text-align: center;
+  font-size: 18px;
+}
+p.chat{
+  padding-top: 1.5em;
+  text-align: right;
+}
+
+p.chatyou{
+  padding-top: 3em;
+  text-align: left;
+  padding-right: 1em;
+}
+
+form.date label{
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: .3em;
+  margin-right: 5em;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked+label {
+  /* bron: sanne frontend class */
+  background-color: #f1564f;
+}
+
+
+/**************************/
+/*  ACCESSIBILITY HIDDEN  */
+/**************************/
+.visually-hidden {
+  /* bron: a11y */
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+  /* added line */
+}
