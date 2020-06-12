@@ -5,37 +5,36 @@ require('dotenv').config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var slug = require("slug");
-// var session = require('express-session');
+var session = require('express-session');
 var mongo = require("mongodb");
 
 const port = 5500;
-
-// //didiercatz had this solution for the MongoNetworkError
-// const { DB_USERNAME, DB_PASSWORD, DB_NAME } = process.env
 
 
 /* DATABASE 
 ================================================================================================== */
 var db = null;
-var url = "mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT;
+var url = process.env.DB_HOST 
 console.log(url);
 mongo.MongoClient.connect(url, {useUnifiedTopology: true}, function (err, client){
     if (err) throw err
     db = client.db(process.env.DB_NAME);
 })
 
+
+
 /* EXPRESS SETUP
 ================================================================================================== */
 express()
     .set("view engine", "ejs")
     .set("views", "view")
-    // .use(session({
-    //     'secret': 'SESSIONS_SECRET'
-    // }))
+    .use(session({
+        'secret': 'SESSIONS_SECRET'
+    }))
     .use(bodyParser.urlencoded({extended: true}))
-    .use(express.static('static-website'))
-    .use('/datingapp', express.static('static-website'))
-    .get('/', checkAuth, getHome)
+    .use(express.static('static'))
+    .use('/datingapp', express.static('static'))
+    .get('/', getHome)
 
     .get('/login', getLogin)
     .post('/login', postLogin)
@@ -57,6 +56,14 @@ express()
         console.log("The server is running!");
     });
 
+/* SESSIONS
+================================================================================================== */
+
+    // var session = db.getMongo().startSession();
+    // db = session.getDatabase(db.getName());
+
+
+
 /* MIDDLEWARE
 ================================================================================================== */
 function checkAuth(req, res, next) {
@@ -71,21 +78,24 @@ function checkAuth(req, res, next) {
 
 /* HOMEPAGE 
 ================================================================================================== */
-function getHome(req, res) {
-    /*
-        1. Haal de gebruiker op uit de sessie
-        2. Haal de dieren op uit de DB
-        3. Filter de dieren (array.filter())
-        4. Stuur dieren in res.render
-    */
-    const animals = [];
-    res.render('index', { data: animals });
+function getHome(req, res, next) {
+    console.log("hallo")
+    db.collection('datingapp').find().toArray(done)
+  
+    function done(err, data) {
+      if (err) {
+        next(err)
+      } else {
+        console.log(data)
+      }
+    }
+    
 }
 
 /* LOGIN
 ================================================================================================== */
 function getLogin(req, res) {
-    res.render('login');
+    res.render('/login');
 }
     function postLogin(req, res) {
     /**
@@ -100,7 +110,7 @@ function getLogin(req, res) {
 /* REGISTER
 ================================================================================================== */
 function getRegister(req, res) {
-    res.render('register');
+    res.render('/register');
 }
     function postRegister(req, res) {
     /**
@@ -115,7 +125,7 @@ function getRegister(req, res) {
 /* MESSAGES
 ================================================================================================== */
 function getMessages(req, res) {
-    res.render('messages');
+    res.render('/messages');
     /**
      * 1. Haal messages uit de DB van de gebruikers sessie
      * 2. Sorteer de messages op datum, recent eerst
@@ -125,7 +135,7 @@ function getMessages(req, res) {
 /* MESSAGES:ID
 ================================================================================================== */
 function getMessagesId(req, res) {
-    res.render('messagesId');
+    res.render('/messagesId');
 }
     function postMessagesId(req, res) {
     /**
@@ -140,7 +150,7 @@ function getMessagesId(req, res) {
 /* APPOINTMENTS
 ================================================================================================== */
 function getAppointments(req, res) {
-    res.render('appointments');
+    res.render('/appointments');
     /**
      * 1. Haal appointments voor de gebruiker uit de database, zijn er geen appointments -> "no appointments yet"
      * 2. Weergeef de appointments en sorteer op dichtsbijzijnde datum
@@ -151,7 +161,7 @@ function getAppointments(req, res) {
 /* PROFILE
 ================================================================================================== */
 function getProfile(req, res) {
-    res.render('profile');
+    res.render('/profile');
 }
     function postProfile(req,res) {
         /**
@@ -160,5 +170,12 @@ function getProfile(req, res) {
          * 3. Als er aanpassingen gemaakt worden en de gebruiker klikt op save, onthoud deze sessie
          * 4. Ververs profiel pagina (redirect naar /profile/)
          */
-    }
 
+         data.push({
+             id: id,
+             species: req.body.species,
+             age: req.body.age
+         })
+
+         res.redirect('/profile');
+    }
