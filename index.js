@@ -8,7 +8,7 @@ var slug = require("slug");
 var session = require('express-session');
 var mongo = require("mongodb");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5500;
 
 
 /* DATABASE 
