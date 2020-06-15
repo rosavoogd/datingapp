@@ -1,5 +1,7 @@
-<%- include('head'); %> <!-- including head.ejs-->
-
+<!DOCTYPE html>	
+<html lang="en">
+    
+<%- include('head'); %> 
 <body>
     <%- include('header'); %> <!-- including header.ejs-->
     <main>
@@ -9,9 +11,10 @@
         <h1>Bob</h1>
         <p class="name">Tabby Cat, 3</p>
     </div>
-        <a href="animal2.html"><img class="dislike button" src="img/dislike.jpg" alt=""></a>
-        <a href="animal2.html"><img class="like button" src="img/like.jpg" alt=""></a>
-
+    <div class="liking">
+        <a href=""><img class="dislike button" src="img/dislike.jpg" alt=""></a>
+        <a href=""><img class="like button" src="img/like.jpg" alt=""></a>
+    </div>
     </main>
     
 <%- include('footer'); %> <!--including footer.ejs-->
