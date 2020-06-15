@@ -4,7 +4,7 @@
   "description": "Server voor mijn dating app",
   "main": "index.js",
   "scripts": {
-    "npm start": "node index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
