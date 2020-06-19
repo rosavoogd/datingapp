@@ -184,4 +184,25 @@ function signup(req, res, next){
 
 
 const counter = 0;
+
+function postProfile(req,res) {
+        //helped by NathanNeelis 
+        const filterAnimal1 = req.body.cat;
+        req.session.filter = filterAnimal1;
+       
+         const done = (filterAnimal) => {
+             if (dataFilter) {
+                 console.log(req.session.filter);
+                 res.render('profile.ejs', {
+                     dataFilter: req.session.filter,
+                 });
+             } else {
+                 res.render('profile.ejs', {   
+                 });
+             }
+         };
+         done(filterAnimal1);
+            console.log("filter works")
+         res.redirect('profile.ejs');
+    }
 ```

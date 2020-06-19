@@ -5,30 +5,29 @@
 <body>
     <%- include('header'); %>
 
- <form action=/profile.ejs method="POST">
-
+ <form action=/profile method="POST" class="profile">
+ 
     <label for="animal">Looking for: <br><br>
         <input type="checkbox" name="cat">
         <img class="checkbox" src="img/cat.png">
 
-        <!-- <input type="checkbox" name="dog">
+        <input type="checkbox" name="dog">
         <img class="checkbox" src="img/doberman.png">
 
-        <input type="checkbox" name="fish">
+        <!-- <input type="checkbox" name="fish">
         <img class="checkbox" src="img/goldfish.png">
 
         <input type="checkbox" name="bunny">
-        <img class="checkbox" src="img/hare.png">
+        <img class="checkbox" src="img/hare.png"> -->
         
         <input type="checkbox" name="bird">
-        <img class="checkbox" src="img/cockatoo.png"> -->
+        <img class="checkbox" src="img/cockatoo.png">
 
-      </label><br><br>
-<label for="age">Age range: <br>
-        <input type="radio" name="age" id="age">0-2 
-        <input type="radio" name="age" id="age">2-6 
-        <input type="radio" name="age" id="age">6-10 
-        <input type="radio" name="age" id="age">10+ 
+    </label><br><br>
+    <label name="age" for="age">Age: <br>
+        <input type="checkbox" name="one" >1
+        <input type="checkbox" name="two" >2
+        <input type="checkbox" name="three" >3 
     </label><br><br>
 
 <label for="button">

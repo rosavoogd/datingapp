@@ -43,14 +43,16 @@ express()
     // .get('/register', getRegister)
     // .post('/register', postRegister)
 
-    // .get('/messages', getMessages)
-    // .get('/messagesId', getMessagesId)
+    .get('/messages', getMessages)
+    .get('/messagesId', getMessagesId)
     // .post('/messagesId', postMessagesId)
 
     // .get('/appointments', getAppointments)
 
     .get('/profile', getProfile)
     .post('/profile', postProfile)
+
+
     
     
     .listen(port, function () {
@@ -81,7 +83,7 @@ function checkAuth(req, res, next) {
 /* HOMEPAGE 
 ================================================================================================== */
 function getHome(req, res, next) {
-    console.log("hallo")
+
     db.collection('datingapp').find().toArray(done)
   
     function done(err, data) {
@@ -128,7 +130,7 @@ function getHome(req, res, next) {
 /* MESSAGES
 ================================================================================================== */
 function getMessages(req, res) {
-    res.render('/messages');
+    res.render('messages.ejs');
     /**
      * 1. Haal messages uit de DB van de gebruikers sessie
      * 2. Sorteer de messages op datum, recent eerst
@@ -137,9 +139,9 @@ function getMessages(req, res) {
 
 /* MESSAGES:ID
 ================================================================================================== */
-// function getMessagesId(req, res) {
-//     res.render('/messagesId');
-// }
+function getMessagesId(req, res) {
+    res.render('messagesId.ejs');
+}
 //     function postMessagesId(req, res) {
 //     /**
 //     * 1. De gebruiker verstuurd het bericht
@@ -166,29 +168,45 @@ function getMessages(req, res) {
 function getProfile(req, res) {
     res.render('profile.ejs');
 }
-    function postProfile(req,res) {
-        //helped by NathanNeelis 
-        const filterAnimal1 = req.body.cat;
-        req.session.filter = filterAnimal1;
+    function postProfile(req, res, next) {
+        //helped by Rowin 
+        const data = req.body
+        const list = [];
+
+        if (data.cat == 'on') {
+            list.push('cat.png')
+        };
+
+        if (data.dog == 'on') {
+            list.push('doberman.png')
+        };
+
+        if (data.bird == 'on') {
+            list.push('cockatoo.png')
+        };
+
+        if (data.one == 'on') {
+            list.push('1 year old')
+        };
+
+        if (data.two == 'on') {
+            list.push('2 years old')
+        };
+
+        if (data.three == 'on') {
+            list.push('3 years old')
+        };
+
+       console.log(list);
+
+        res.render('preferences.ejs', {data: list});
+
+    }
+
+
         /**
          * 1. check of het profiel met de preferences al een keer is ingevuld
          * 2. Als het al is ingevuld, toon de preferences, zo niet, toon een leeg form
          * 3. Als er aanpassingen gemaakt worden en de gebruiker klikt op save, onthoud deze sessie
          * 4. Ververs profiel pagina (redirect naar /profile/)
          */
-
-         const done = (filterAnimal) => {
-             if (dataFilter) {
-                 console.log(req.session.filter);
-                 res.render('profile.ejs', {
-                     dataFilter: req.session.filter,
-                 });
-             } else {
-                 res.render('profile.ejs', {   
-                 });
-             }
-         };
-         done(filterAnimal1);
-
-         res.redirect('profile.ejs');
-    }

@@ -3,20 +3,23 @@
     
 <%- include('head'); %> 
 <body>
-    <%- include('header'); %> <!-- including header.ejs-->
+    <section class="bgimg">
+    <%- include('header'); %> 
+    <div class="site-container">
     <main>
-       <div class="box" >
-        <!-- img src: PINTEREST www.pinterest.com/pin/746823550679493158/ -->
-        <img class="animal" src="img/bob.jpeg" alt="">
+        <div class="like">
+        <img src="img/cross.png" alt="">
+       <div class="box" > 
+        <!-- img src: https://www.doamsterdam.nl/dierenasiel/ -->
         <h1>Bob</h1>
-        <p class="name">Tabby Cat, 3</p>
+        <p class="name">Boxer, 2</p>
     </div>
-    <div class="liking">
-        <a href=""><img class="dislike button" src="img/dislike.jpg" alt=""></a>
-        <a href=""><img class="like button" src="img/like.jpg" alt=""></a>
-    </div>
+    <img src="img/heart.png" alt="">
+</div>
     </main>
     
-<%- include('footer'); %> <!--including footer.ejs-->
+<%- include('footer'); %> 
+</div>
+</section>
 </body>
 </html>

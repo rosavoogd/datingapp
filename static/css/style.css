@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.bgimg{
+  background-image: url(../img/doug.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+
 h1 {
   font-family: 'Playfair Display', serif;
   text-align: center;
@@ -41,7 +52,7 @@ nav ul {
 }
 
 header img {
-  width: 210px;
+  width: 150px;
   padding-left: 5em;
   padding-right: 6em;
   padding-top: .5em;
@@ -60,18 +71,18 @@ p.name {
 }
 
 div.box {
-  background-color: #e8e3de;
+  background-color: #F9B95B;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 500px;
+  margin-bottom: 100px;
   width: 300px;
-  height: 410px;
+  height: 90px;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px lightgrey;
-
 }
 
-form {
+form.profile {
   font-size: 20px;
   font-family: 'Roboto Condensed', sans-serif;
   text-align: center;
@@ -119,6 +130,7 @@ main p {
 
 
 
+
 /* like knop positie*/
 
 
@@ -150,19 +162,19 @@ img.matches {
   padding: .5em;
 }
 
-.match {
+.match{
   float: left;
 }
 
 
 main.bg {
   background-color: #e8e3de;
-  border-radius: 10px;
+  border-radius: 5px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 410px;
-  height: 600px;
+  width: 100%;
+  height: 550px;
 }
 
 div p {
@@ -171,7 +183,7 @@ div p {
 
 img.message {
   border-radius: 50%;
-  width: 15%;
+  width: 90px;
   margin-left: 1em;
   float: left;
   padding: .5em;
@@ -180,10 +192,11 @@ img.message {
 
 img.messageyou {
   border-radius: 50%;
-  width: 15%;
+  width: 90px;
   margin-right: 1em;
   float: right;
   padding: .5em;
+  
 }
 
 h2.care {
@@ -230,4 +243,56 @@ input[type="radio"]:checked+label {
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
   /* added line */
+}
+
+/* .container-bg {
+  overflow: hidden;
+} */
+
+/* src: https://stackoverflow.com/questions/51879819/half-circle-background-css */
+nav {
+  width:100%;
+  height: 100px;
+  background-color: #e8e3de;
+  margin-bottom: 20px;
+}
+
+  footer {
+      background-color: #e8e3de;
+      padding: 1em;
+      margin-top: 1em;
+  }
+
+  footer img {
+    width:200px;
+    padding: 1em;
+  }
+
+  footer p {
+    color: #1e3363;
+    text-align: center;
+  }
+
+  input[type=text] {
+    float: right;
+    padding: 1em;
+  } 
+
+  /* FOOTER TO THE BOTTOM */
+/* bron: https://dev.to/selbekk/how-to-make-your-footer-stick-to-the-bottom-of-your-page-57k9 */
+.site-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+div.like {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+div.like img{
+  width: 100px;
+  height: 100px;
+  padding: 1em;
 }
